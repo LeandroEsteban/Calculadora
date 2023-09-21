@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ecuacion {
@@ -9,21 +10,27 @@ public class ecuacion {
     public static void  iniciar(){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Ingrese los coeficientes y constantes del sistema:");
-        System.out.print("A: ");
-        double A = scanner.nextDouble();
-        System.out.print("B: ");
-        double B = scanner.nextDouble();
-        System.out.print("C: ");
-        double C = scanner.nextDouble();
-        System.out.print("D: ");
-        double D = scanner.nextDouble();
-        System.out.print("E: ");
-        double E = scanner.nextDouble();
-        System.out.print("F: ");
-        double F = scanner.nextDouble();
+        double A = obtenerNumero(scanner, "A");
+        double B = obtenerNumero(scanner, "B");
+        double C = obtenerNumero(scanner, "C");
+        double D = obtenerNumero(scanner, "D");
+        double E = obtenerNumero(scanner, "E");
+        double F = obtenerNumero(scanner, "F");
 
         resolverSistema(A, B, C, D, E, F);
+    }
+
+    public static double obtenerNumero(Scanner scanner, String nombre) {
+        while (true) {
+            System.out.print(nombre + ": ");
+            try {
+                double numero = scanner.nextDouble();
+                return numero;
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Debes ingresar un número.");
+                scanner.next(); // Limpiar el buffer del scanner
+            }
+        }
     }
 
     public static void resolverSistema(double A, double B, double C, double D, double E, double F) {
@@ -41,3 +48,4 @@ public class ecuacion {
         }
     }
 }
+
