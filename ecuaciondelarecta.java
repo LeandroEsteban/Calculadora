@@ -35,7 +35,7 @@ public class ecuaciondelarecta {
 
             } catch (Exception e) {
                 System.out.println("Error: Por favor ingrese un valor numérico válido. Intente nuevamente.");
-                scanner.nextLine(); // Limpiar el búfer de entrada
+                scanner.nextLine();
             }
         }
     }
